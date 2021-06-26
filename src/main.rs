@@ -12,7 +12,7 @@ fn main() {
         .iter()
         .map(|r| calculate_repository_statistic(&r.name, &r.html_url))
         .collect::<Vec<_>>();
-    repository_statistics.sort_by(|a, b| b.first_commit_date.cmp(&a.first_commit_date));
+    repository_statistics.sort_by(|a, b| b.last_commit_date.cmp(&a.last_commit_date));
     let serialized = serde_json::to_string(&repository_statistics).unwrap();
     println!("{}", serialized);
 }
